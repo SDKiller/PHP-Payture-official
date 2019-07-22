@@ -1,0 +1,25 @@
+{
+    "name": "payture/php-payture-official",
+    "description": "PHP-Payture-official",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "S.Andreev",
+            "email": "sergey.andreev@payture.com",
+            "role": "Developer"
+        }
+    ],
+    "version": "1.0.1",
+    "support": {
+        "issues": "https://github.com/Payture/PHP-Payture-official/issues"
+    },
+    "require": {
+        "php": "^5.4",
+        "ext-dom": "*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    }
+}

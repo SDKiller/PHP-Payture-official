@@ -6,6 +6,8 @@
  * @copyright 2015 Payture
  */
 
+namespace payture\phpofficial;
+
 /**
  * Class that provides methods for executing Payture InPay API requests.
  *
@@ -28,7 +30,7 @@ class PaytureInPay extends Payture
      *
      * @param array $data Payment parameters
      *
-     * @return stdClass Initialization result
+     * @return \stdClass Initialization result
      */
     public static function Init( $data )
     {
@@ -68,7 +70,7 @@ class PaytureInPay extends Payture
      *
      * @param int $amount Amount of payment in kopecks (Optional - if empty means total sum)
      *
-     * @return stdClass
+     * @return \stdClass
      */
     public static function Charge( $password, $orderId, $amount = 0  )
     {
@@ -97,7 +99,7 @@ class PaytureInPay extends Payture
      * @param string $orderId Payment ID in Merchant system
      * @param int $amount Amount of payment in kopecks
      *
-     * @return stdClass
+     * @return \stdClass
      */
     public static function Unblock( $password, $orderId, $amount )
     {
@@ -122,7 +124,7 @@ class PaytureInPay extends Payture
      * @param string $orderId Payment ID in Merchant system
      * @param int $amount Amount of payment in kopecks
      *
-     * @return stdClass
+     * @return \stdClass
      */
     public static function Refund( $password, $orderId, $amount)
     {
@@ -143,7 +145,7 @@ class PaytureInPay extends Payture
      *
      * @param string $orderId Payment ID in Merchant system
      *
-     * @return stdClass
+     * @return \stdClass
      */
     public static function PayStatus( $orderId )
     {

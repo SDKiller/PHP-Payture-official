@@ -6,6 +6,8 @@
  * @copyright 2015 Payture
  */
 
+namespace payture\phpofficial;
+
 /**
  * Payture basic configuration class
  *

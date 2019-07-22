@@ -6,6 +6,8 @@
  * @copyright 2015 Payture
  */
 
+namespace payture\phpofficial;
+
 /**
  * Payture base class.
  *
@@ -24,23 +26,23 @@ abstract class Payture
      * @param string $apiPrefix Prefix for api type in URL
      * @param array $params Array of pairs kay => value, that will be used as GET parameters
      *
-     * @return stdClass
+     * @return \stdClass
      */
     protected static function request( $operation, $apiPrefix, $params = array(), $post=false )
     {
         PaytureConfiguration::setApiPrefix($apiPrefix);
 
         $ch = curl_init();
-        
+
         $requestLink = self::generateLink($operation, $params);
-        
+
         curl_setopt( $ch, CURLOPT_URL,  $requestLink);
         curl_setopt( $ch, CURLOPT_POST, $post );
         curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false );
         curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
 
         $result = curl_exec( $ch );
-        
+
         curl_close( $ch );
         return self::_convertResponse( $result );
     }
@@ -55,7 +57,7 @@ abstract class Payture
      */
     protected static function generateLink($operation, $params )
     {
-        $link = "https://".self::_getDomain()."/".PaytureConfiguration::getApiPrefix()."/" . $operation."?".self::stringify($params, "&"); 
+        $link = "https://".self::_getDomain()."/".PaytureConfiguration::getApiPrefix()."/" . $operation."?".self::stringify($params, "&");
         return $link;
     }
 
@@ -64,13 +66,13 @@ abstract class Payture
      *
      * @param string $XMLString Valid XML string, that consists from 1 element with attributes
      *
-     * @return stdClass
+     * @return \stdClass
      */
     private static function _convertResponse($XMLString)
     {
         echo $XMLString;
 
-        $xml = new SimpleXMLIterator($XMLString);
+        $xml = new \SimpleXMLIterator($XMLString);
 
         $resultObject = self::_XMLNodeToArray($xml);
 
@@ -80,7 +82,7 @@ abstract class Payture
     /**
      * Recursively convert SimpleXMLIterator to array
      *
-     * @param SimpleXMLIterator $XMLNode
+     * @param \SimpleXMLIterator $XMLNode
      *
      * @return array
      */
@@ -105,16 +107,16 @@ abstract class Payture
      *
      * @return string
      *
-     * @throws Exception
+     * @throws \Exception
      */
     private static function _getDomain()
     {
         if (PaytureConfiguration::getEnvironment() == PaytureConfiguration::ENV_PRODUCTION) {
             return "secure.payture.com";
         } elseif (PaytureConfiguration::getEnvironment() == PaytureConfiguration::ENV_DEVELOPMENT) {
-            return "sandbox.payture.com";
+            return "sandbox3.payture.com";
         } else {
-            throw new Exception("Environment is not set!");
+            throw new \Exception("Environment is not set!");
         }
     }
 

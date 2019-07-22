@@ -6,6 +6,8 @@
  * @copyright 2015 Payture
  */
 
+namespace payture\phpofficial;
+
 /**
  * Class that provides methods for executing standard Payture API requests.
  *
@@ -33,7 +35,7 @@ class PaytureAPI extends Payture
      * @param string $customerKey Customer ID in Payture AntiFraud system (Optional)
      * @param array $customFields Additional transaction fields (Optional)
      *
-     * @return stdClass
+     * @return \stdClass
      */
     public static function Pay( $orderId, $amount, $payInfo, $paytureId = "", $customerKey = "", $customFields = array() )
     {
@@ -70,7 +72,7 @@ class PaytureAPI extends Payture
      * @param string $customerKey Customer ID in Payture AntiFraud system (Optional)
      * @param array $customFields Additional transaction fields (Optional)
      *
-     * @return stdClass
+     * @return \stdClass
      */
     public static function Block( $orderId, $amount, $payInfo, $paytureId = "", $customerKey = "", $customFields = array() )
     {
@@ -103,7 +105,7 @@ class PaytureAPI extends Payture
      *
      * @param string $orderId Payment ID in Merchant system
      *
-     * @return stdClass
+     * @return \stdClass
      */
     public static function Charge( $orderId )
     {
@@ -124,7 +126,7 @@ class PaytureAPI extends Payture
      * @param string $orderId Payment ID in Merchant system
      * @param int $amount Amount in kopecks that is to be unblocked
      *
-     * @return stdClass
+     * @return \stdClass
      */
     public static function Unblock( $orderId, $amount )
     {
@@ -145,7 +147,7 @@ class PaytureAPI extends Payture
      * @param string $orderId Payment ID in Merchant system
      * @param int $amount Amount in kopecks that is to be returned
      *
-     * @return stdClass
+     * @return \stdClass
      */
     public static function Refund( $orderId, $amount )
     {
@@ -165,7 +167,7 @@ class PaytureAPI extends Payture
      *
      * @param string $orderId Payment ID in Merchant system
      *
-     * @return stdClass
+     * @return \stdClass
      */
     public static function GetState( $orderId )
     {
