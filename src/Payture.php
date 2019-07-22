@@ -70,8 +70,6 @@ abstract class Payture
      */
     private static function _convertResponse($XMLString)
     {
-        echo $XMLString;
-
         $xml = new \SimpleXMLIterator($XMLString);
 
         $resultObject = self::_XMLNodeToArray($xml);
