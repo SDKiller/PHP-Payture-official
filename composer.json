@@ -9,12 +9,12 @@
             "role": "Developer"
         }
     ],
-    "version": "1.0.1",
+    "version": "1.0.2",
     "support": {
         "issues": "https://github.com/Payture/PHP-Payture-official/issues"
     },
     "require": {
-        "php": "^5.4",
+        "php": ">=5.4",
         "ext-dom": "*"
     },
     "autoload": {
